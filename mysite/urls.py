@@ -1,13 +1,15 @@
 from django.conf.urls.defaults import *
 from mysite.views import hello, current_datetime, main_page
+from django.contrib.auth.views import login, logout
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
 
 urlpatterns = patterns('',
     ('^hello/$', hello),
-	('^time/$', current_datetime),
-	('^$', main_page),
+    ('^time/$', current_datetime),
+    ('^$', main_page),
+	(r'^accounts/login/$', login),
     # Example:
     # (r'^mysite/', include('mysite.foo.urls')),
 
