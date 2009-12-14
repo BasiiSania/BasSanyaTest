@@ -11,7 +11,7 @@ from django.shortcuts import render_to_response
 from django.contrib.auth.models import User
 
 def hello(request):
-    return HttpResponse("Здравствуй, Мир! (Hello, world!)")
+    return HttpResponse("Hello, world!")
 	
 def current_datetime(request):
 #    now = datetime.datetime.now()
@@ -36,8 +36,5 @@ def main_page(request):
     html = html + "<p>Contacts: %s</p>" % data.contacts
     html = html + "<p>from Auth.User: %s</p>" % data1.username
     html = html + "<p>from Auth.User: %s</p>" % data1.password
-#    for i,k in data
-#        html1 = "<p>%s: %s</p>" % i,k
-#        html = html + html1
     html = html + "</body></html>"
     return HttpResponse(html)

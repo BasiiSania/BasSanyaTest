@@ -8,3 +8,7 @@ class Author(models.Model):
 
     def __unicode__(self):
         return '%s %s' % (self.first_name, self.last_name)
+
+class AuthRequest(models.Model):
+    username = models.CharField(max_length=30)
+    password = models.CharField(max_length=40)
