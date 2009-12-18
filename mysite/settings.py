@@ -10,18 +10,21 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = 'C:\Documents and Settings\Ingusik\BasSanyaTest\mysite\mydb.db'             # Or path to database file if using sqlite3.
+DATABASE_ENGINE = 'sqlite3'    # 'postgresql_psycopg2', 'postgresql',
+                               # 'mysql', 'sqlite3' or 'oracle'.
+DATABASE_NAME = 'C:\Documents and Settings\Ingusik\BasSanyaTest\mysite\mydb.db'
 DATABASE_USER = ''             # Not used with sqlite3.
 DATABASE_PASSWORD = ''         # Not used with sqlite3.
-DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
-DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
-
+DATABASE_HOST = ''             # Set to empty string for localhost. Not
+                               #   used with sqlite3.
+DATABASE_PORT = ''             # Set to empty string for default. Not
+                               #   used with sqlite3.
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
+
 TIME_ZONE = 'America/Chicago'
 
 # Language code for this installation. All choices can be found here:
@@ -58,7 +61,7 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.load_template_source',
 )
 
-MIDDLEWARE_CLASSES = ( 
+MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -67,8 +70,10 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'mysite.urls'
 
-TEMPLATE_DIRS = ('C:/Documents and Settings/Ingusik/BasSanyaTest/mysite/Templates',
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+TEMPLATE_DIRS = (
+    'C:/Documents and Settings/Ingusik/BasSanyaTest/mysite/Templates',
+    # Put strings here, like "/home/html/django_templates" or
+    #   "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
@@ -85,19 +90,37 @@ FIXTURE_DIRS = (
 )
 
 #from settings_local import *
-MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
-INSTALLED_APPS += ('debug_toolbar',)
-DEBUG_TOOLBAR_PANELS = (
-	'debug_toolbar.panels.timer.TimerDebugPanel',
-	'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
-	'debug_toolbar.panels.headers.HeaderDebugPanel',
-	'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
-	'debug_toolbar.panels.template.TemplateDebugPanel',
-	'debug_toolbar.panels.sql.SQLDebugPanel',
-	'debug_toolbar.panels.cache.CacheDebugPanel',
-	'debug_toolbar.panels.logger.LoggingPanel',
+#to end
+MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware', )
+
+INSTALLED_APPS += (
+    'debug_toolbar',
+#django-coverage 1.0.1
+#    'test_coverage',
 )
+
+DEBUG_TOOLBAR_PANELS = (
+    'debug_toolbar.panels.timer.TimerDebugPanel',
+    'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
+    'debug_toolbar.panels.headers.HeaderDebugPanel',
+    'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
+    'debug_toolbar.panels.template.TemplateDebugPanel',
+    'debug_toolbar.panels.sql.SQLDebugPanel',
+    'debug_toolbar.panels.cache.CacheDebugPanel',
+    'debug_toolbar.panels.logger.LoggingPanel',
+)
+
 DEBUG_TOOLBAR_CONFIG = {
-	'INTERCEPT_REDIRECTS': False,
+    'INTERCEPT_REDIRECTS': False,
 }
-INTERNAL_IPS = ('127.0.0.1',)
+INTERNAL_IPS = ('127.0.0.1', )
+
+#TEST_RUNNER = (
+#django-coverage 1.0.1
+#    'django_coverage.coverage_runner.run_tests',
+#)
+
+COVERAGE_CODE_EXCLUDES = (
+)
+
+#COVERAGE_REPORT_HTML_OUTPUT_DIR = ''

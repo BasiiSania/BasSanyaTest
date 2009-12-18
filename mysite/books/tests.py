@@ -6,18 +6,16 @@ Replace these with more appropriate tests for your application.
 """
 
 from django.test import TestCase
+from books.models import Author
+
 
 class SimpleTest(TestCase):
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
-        self.failUnlessEqual(1 + 1, 2)
+    fixtures = ['initial_data.json']
 
-__test__ = {"doctest": """
-Another way to test that 1 + 1 is equal to 2.
-
->>> 1 + 1 == 2
-True
-"""}
-
+    def test_auth_correct(self):
+        data = Author.objects.get(pk=1)
+        data2 = User.objects.get(pk=2)
+        self.assertEquals(data.first_name, 'Oleksandr')
+        self.assertEquals(data.last_name, 'Basiy')
+        self.assertEquals(data.contacts, '5156696, Kyiv')
+        self.assertEquals(data2.username, 'Sasha')

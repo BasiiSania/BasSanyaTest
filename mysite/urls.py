@@ -9,11 +9,11 @@ urlpatterns = patterns('',
     ('^hello/$', hello),
     ('^time/$', current_datetime),
     ('^$', main_page),
-	(r'^accounts/login/$', login),
+    (r'^accounts/login/$', login),
     # Example:
     # (r'^mysite/', include('mysite.foo.urls')),
 
-    # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
+    # Uncomment the admin/doc line below and add 'django.contrib.admindocs'
     # to INSTALLED_APPS to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
