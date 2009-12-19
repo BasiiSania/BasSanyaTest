@@ -1,5 +1,4 @@
-[
-{"pk": 2, 
+[{"pk": 2, 
     "model": "auth.user", 
     "fields": {
 	    "username": "Sasha", 
@@ -24,5 +23,4 @@
         "last_name": "Basiy", 
         "contacts": "5156696, Kyiv"
     }
-}, 
-]
+}]

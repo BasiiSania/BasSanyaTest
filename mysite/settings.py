@@ -3,6 +3,16 @@
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+#TEMPLATE_CONTEXT_PROCESSORS = ('context_processors.django_settings_proc')
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.request',
+    'context_processors.django_settings',
+)
+
 ADMINS = (
     ('Oleksandr', 'obasiy@ukr.net'),
     # ('Your Name', 'your_email@domain.com'),
@@ -25,7 +35,7 @@ DATABASE_PORT = ''             # Set to empty string for default. Not
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
 
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'Ukraina/Kyiv'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -71,7 +81,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'mysite.urls'
 
 TEMPLATE_DIRS = (
-    'C:/Documents and Settings/Ingusik/BasSanyaTest/mysite/Templates',
+    'C:\Documents and Settings\Ingusik\BasSanyaTest\mysite\Templates',
     # Put strings here, like "/home/html/django_templates" or
     #   "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
@@ -95,7 +105,7 @@ MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware', )
 
 INSTALLED_APPS += (
     'debug_toolbar',
-#django-coverage 1.0.1
+# django-coverage 1.0.1
 #    'test_coverage',
 )
 

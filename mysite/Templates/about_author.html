@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}About author{% endblock %}
+{% block content %}
+<table>
+<tr>
+    <td>First name:</td>
+    <td>{{ first_name }}</td>
+</tr>
+<tr>
+    <td>Last name:</td>
+    <td>{{ last_name }}</td>
+</tr>
+<tr>
+    <td>Bio:</td>
+    <td>{{ bio }}</td>
+</tr><tr>
+    <td>Contacts:</td>
+    <td>{{ contacts }} </td>
+</tr>
+</table>
+{% endblock %}

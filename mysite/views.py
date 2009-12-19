@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
-from django.http import HttpResponse
 import datetime
-from django.core import management
+
+from django.http import HttpResponse
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
-from django.template.loader import get_template
 from django.template import Template, Context
+from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.contrib.auth.models import User
+
 from books.models import Author
 
 
@@ -23,7 +24,7 @@ def current_datetime(request):
 #
 #    now = datetime.datetime.now()
 #    return render_to_response('current_datetime.html', {'current_date': now})
-#
+
     current_date = datetime.datetime.now()
     return render_to_response('current_datetime.html', locals())
 
@@ -31,10 +32,10 @@ def current_datetime(request):
 @login_required
 def main_page(request):
     data = Author.objects.get(first_name = 'Oleksandr')
-    html = "<html><body><p> About me.</p>"
-    html = html + "<p>First name: %s</p>" % data.first_name
-    html = html + "<p>Last name: %s</p>" % data.last_name
-    html = html + "<p>Bio: %s</p>" % data.bio
-    html = html + "<p>Contacts: %s</p>" % data.contacts
-    html = html + "</body></html>"
-    return HttpResponse(html)
+#    return render_to_response('about_author.html', locals())
+    return render_to_response('about_author.html', {
+        'first_name': data.first_name,
+        'last_name': data.last_name,
+        'bio': data.bio,
+        'contacts': data.contacts, },
+        context_instance = RequestContext(request))
