@@ -99,6 +99,8 @@ INSTALLED_APPS = (
 FIXTURE_DIRS = (
 )
 
+DATABASE_SUPPORTS_TRANSACTIONS = True
+
 #from settings_local import *
 #to end
 MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware', )

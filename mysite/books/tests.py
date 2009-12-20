@@ -6,7 +6,7 @@ Replace these with more appropriate tests for your application.
 """
 
 from django.test import TestCase
-from books.models import Author
+from mysite.books.models import Author
 from django.contrib.auth.models import User
 
 
