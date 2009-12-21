@@ -1,5 +1,6 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
+from django.template import RequestContext
 
 from mysite.books.forms import EditorForm
 from mysite.books.models import Author
@@ -24,8 +25,10 @@ def editor(request):
         form = EditorForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
+# Transforme to a loop!
             data.first_name = cd['first_name']
             data.last_name = cd['last_name']
+            data.birth_day = cd['birth_day']
             data.bio = cd['bio']
             data.contacts = cd['contacts']
             data.save()
@@ -34,6 +37,9 @@ def editor(request):
         initial={
         'first_name': data.first_name,
         'last_name': data.last_name,
+        'birth_day': data.birth_day,
         'bio': data.bio,
         'contacts': data.contacts, })
-    return render_to_response('editor_form.html', {'form': form})
+    return render_to_response('editor_form.html',
+                    {'form': form},
+                    context_instance = RequestContext(request))

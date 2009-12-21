@@ -2,23 +2,29 @@
 {% block title %}About author{% endblock %}
 {% block content %}
 <table>
+<!-- Transforme to a loop! -->
 <tr>
     <td>First name:</td>
-    <td>{{ first_name }}</td>
+    <td>{{ data.first_name }}</td>
 </tr>
 <tr>
     <td>Last name:</td>
-    <td>{{ last_name }}</td>
+    <td>{{ data.last_name }}</td>
+</tr>
+<tr>
+    <td>Date of birth:</td>
+    <td>{{ data.birth_day }}</td>
 </tr>
 <tr>
     <td>Bio:</td>
-    <td>{{ bio }}</td>
-</tr><tr>
+    <td>{{ data.bio }}</td>
+</tr>
+<tr>
     <td>Contacts:</td>
-    <td>{{ contacts }} </td>
+    <td>{{ data.contacts }} </td>
 </tr>
 </table>
-   <form action="/editor/" method="get">
+   <form action="/editor/" method="">
         <input type="submit" value="Edit">
     </form>
 {% endblock %}

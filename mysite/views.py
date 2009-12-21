@@ -32,10 +32,6 @@ def current_datetime(request):
 @login_required
 def main_page(request):
     data = Author.objects.get(pk=1)
-#    return render_to_response('about_author.html', locals())
     return render_to_response('about_author.html', {
-        'first_name': data.first_name,
-        'last_name': data.last_name,
-        'bio': data.bio,
-        'contacts': data.contacts, },
+        'data': data, },
         context_instance = RequestContext(request))

@@ -11,3 +11,4 @@ mysite/pep8.py
 mysite/manage.py
 mysite/.coverage
 mysite/cover
+mysite/media
