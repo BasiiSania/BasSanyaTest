@@ -12,3 +12,4 @@ mysite/manage.py
 mysite/.coverage
 mysite/cover
 mysite/media
+mysite/Templates/admin

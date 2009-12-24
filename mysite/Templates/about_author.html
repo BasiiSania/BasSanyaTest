@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load edit_obj_templ_tags %}
 {% block title %}About author{% endblock %}
 {% block content %}
 <table>
@@ -23,6 +24,11 @@
     <td>Contacts:</td>
     <td>{{ data.contacts }} </td>
 </tr>
+<!--<tr>
+    <td>{% edit_list "user" %} Edit curent user {% endedit_list %} </td>
+    <td> </td>
+</tr>-->
+
 </table>
    <form action="/editor/" method="">
         <input type="submit" value="Edit">
