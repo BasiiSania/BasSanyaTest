@@ -27,7 +27,7 @@ class EditListObjNode(template.Node):
         try:
             obj = context[self.obj_name]
         except ValueError:
-            msg = '%r object is unnown' % self.obj_name
+            msg = '%r object is unknown' % self.obj_name
             raise template.TemplateSyntaxError(msg)
         url = "%r" % str(obj.__class__)
         url = url[1:-2]
