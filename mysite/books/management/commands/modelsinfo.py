@@ -10,8 +10,8 @@ class Command(AppCommand):
             default = False,
             help ='Add object count information'),
     )
-    help = 'Prints model names for given \
-         application and optional object count.'
+    help = 'Prints model names for projects \
+         applications and optional object count.'
 
     requires_model_validation = True
 
@@ -22,7 +22,8 @@ class Command(AppCommand):
         for ap in app_list:
             lines.append("--------------------")
             lines.append("%s" % str(ap))
-            lines.append("---------------------------------------------------------------")
+            lines.append("-----------------------------\
+                          -----------------------------")
             for model in get_models(ap):
                 lines.append("[%s]" % model.__name__ + (options["count"] and\
                     " - %s objects" % model._default_manager.count() or ""))
