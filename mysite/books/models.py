@@ -17,8 +17,19 @@ class Author(models.Model):
 
 
 class AuthRequest(models.Model):
-    username = models.CharField(max_length=30)
-    password = models.CharField(max_length=40)
+    enter_login = models.CharField(max_length=30)
+    enter_pass = models.CharField(max_length=40)
+
+    def __unicode__(self):
+        return '%s, %s' % (self.username, self.password)
+
+
+class LogDB(models.Model):
+    moment = models.DateTimeField()
+    description = models.CharField(max_length=30)
+
+    def __unicode__(self):
+        return '%s: %s' % (self.moment.strftime("%Y %b %d, %H:%M:%S"), self.description)
 
 signals.post_save.connect(log_models_change, sender=None)
 signals.post_delete.connect(log_models_delete, sender=None)
