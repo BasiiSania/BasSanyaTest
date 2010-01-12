@@ -18,7 +18,6 @@ def log_models_change(**kwargs):
         to_log_db.save()
 
 
-
 def log_models_delete(**kwargs):
     if kwargs['sender'].__name__ != 'LogDB':
         from mysite.books.models import LogDB

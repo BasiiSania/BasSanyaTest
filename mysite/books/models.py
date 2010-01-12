@@ -21,7 +21,7 @@ class AuthRequest(models.Model):
     enter_pass = models.CharField(max_length=40)
 
     def __unicode__(self):
-        return '%s, %s' % (self.username, self.password)
+        return '%s, %s' % (self.enter_login, self.enter_pass)
 
 
 class LogDB(models.Model):

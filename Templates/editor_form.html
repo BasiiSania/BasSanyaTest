@@ -1,0 +1,28 @@
+ {% load edit_obj_templ_tags %}
+ <html>
+ <!-- calendar -->
+<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}calendar/calendar-win2k-cold-1.css" />
+<script type="text/javascript" src="{{ MEDIA_URL }}calendar/calendar.js"></script>
+ <!-- this is translation file - choose your language here -->
+<script type="text/javascript" src="{{ MEDIA_URL }}calendar/lang/calendar-en.js"></script>
+<script type="text/javascript" src="{{ MEDIA_URL }}calendar/calendar-setup.js"></script>
+<!-- /calendar -->
+<head>
+    <title>Edit author's profile</title>
+</head>
+<body>
+    <h1>Edit author's profile</h1>
+    {% if form.errors %}
+        <p style="color: red;">
+            Please correct the error{{ form.errors|pluralize }} below.
+        </p>
+    {% endif %}
+
+    <form action="" method="post">
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Save">
+    </form> 
+</body>
+</html>
