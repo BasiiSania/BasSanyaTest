@@ -13,18 +13,10 @@ from books.models import Author
 
 
 def hello(request):
-    return HttpResponse("Hello, world!")
+    return HttpResponse("Hello, world! I am alive!")
 
 
 def current_datetime(request):
-#    now = datetime.datetime.now()
-#    t = get_template('current_datetime.html')
-#    html = t.render(Context({'current_date': now}))
-#    return HttpResponse(html)
-#
-#    now = datetime.datetime.now()
-#    return render_to_response('current_datetime.html', {'current_date': now})
-
     current_date = datetime.datetime.now()
     return render_to_response('current_datetime.html', locals())
 

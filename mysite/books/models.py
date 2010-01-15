@@ -1,8 +1,9 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 from django.db.models import signals
 from django.dispatch import dispatcher
+
 from mysite.books.signals import log_models_change
-from mysite.books.signals import log_models_delete
 
 
 class Author(models.Model):
@@ -31,8 +32,35 @@ class LogDB(models.Model):
     def __unicode__(self):
         return '%s: %s' % (self.moment.strftime("%Y %b %d, %H:%M:%S"), self.description)
 
+
 signals.post_save.connect(log_models_change, sender=None)
-signals.post_delete.connect(log_models_delete, sender=None)
-#dispatcher.connect(log_models_change,signal=signals.post_init,sender=None)
-#dispatcher.connect(log_models_change,signal=signals.post_save,sender=None)
-#dispatcher.connect(log_models_change,signal=signals.post_delete,sender=None)
+signals.post_delete.connect(log_models_change, sender=None)
+
+
+"""
+>>> from django.contrib.auth.models import User
+>>> User.objects.get(pk=2)
+<User: Sashok>
+>>> from mysite.books.models import Author
+>>> Author.objects.get(pk=1)
+<Author: Oleksandr Basiy>
+>>> a = Author(first_name = "ABCDEF")
+>>> a.save()
+>>> a = Author.objects.get(first_name = "ABCDEF")
+>>> print a.first_name.encode('utf-8')
+ABCDEF
+>>> from mysite.books.models import AuthRequest
+>>> a = AuthRequest(enter_login = "ABCDEF")
+>>> a.save()
+>>> a = AuthRequest.objects.get(enter_login = "ABCDEF")
+>>> print a.enter_login.encode('utf-8')
+ABCDEF
+>>> from mysite.books.models import LogDB
+>>> from datetime import datetime
+>>> a = LogDB(moment = datetime.now(), description =  "testAPGOFDFLDPS")
+>>> a.save()
+>>> m = a.moment
+>>> a = LogDB.objects.get(moment = m)
+>>> print a.description.encode('utf-8')
+testAPGOFDFLDPS
+"""
