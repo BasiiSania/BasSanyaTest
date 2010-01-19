@@ -30,14 +30,15 @@ class LogDB(models.Model):
     description = models.CharField(max_length=30)
 
     def __unicode__(self):
-        return '%s: %s' % (self.moment.strftime("%Y %b %d, %H:%M:%S"), self.description)
+        return '%s: %s' % (self.moment.strftime("%Y %b %d, %H:%M:%S"),
+                           self.description)
 
 
 signals.post_save.connect(log_models_change, sender=None)
 signals.post_delete.connect(log_models_change, sender=None)
 
 
-"""
+__test__ = {"doctest": """
 >>> from django.contrib.auth.models import User
 >>> User.objects.get(pk=2)
 <User: Sashok>
@@ -63,4 +64,4 @@ ABCDEF
 >>> a = LogDB.objects.get(moment = m)
 >>> print a.description.encode('utf-8')
 testAPGOFDFLDPS
-"""
+"""}

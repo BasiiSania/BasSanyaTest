@@ -1,10 +1,6 @@
 *.pyc
-mysite/*.pyc
-mysite/urls.pyc
 mysite/mydb.db
-mysite/settings.pyc
 mysite/settings_local.py
-mysite/settings_local.pyc
 tests_html/*.html
 tests_html
 mysite/pep8.py

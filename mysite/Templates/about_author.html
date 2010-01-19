@@ -24,11 +24,14 @@
     <td>Contacts:</td>
     <td>{{ data.contacts }} </td>
 </tr>
-<!--<tr>
-    <td>{% edit_list user %} Edit curent user {% endedit_list %} </td>
-    <td> </td>
-</tr>-->
-
+{% if user.is_superuser %}
+<tr>
+    <td>{% edit_list user %} Edit curent user. {% endedit_list %} </td>
+</tr>
+{% endif %}
+<tr>
+    <td>{% edit_list data %} Edit data. {% endedit_list %} </td>
+</tr>
 </table>
    <form action="/editor/" method="">
         <input type="submit" value="Edit">
