@@ -1,0 +1,58 @@
+ {% load edit_obj_templ_tags %}
+ <html>
+ <!-- calendar -->
+<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}calendar/calendar-win2k-cold-1.css" />
+ <script type="text/javascript" src="{{ MEDIA_URL }}calendar/calendar.js"></script>
+ <!-- this is translation file - choose your language here -->
+<script type="text/javascript" src="{{ MEDIA_URL }}calendar/lang/calendar-en.js"></script>
+<script type="text/javascript" src="{{ MEDIA_URL }}calendar/calendar-setup.js"></script>
+<!-- /calendar -->
+<head>
+    <title>Edit author's profile</title>
+    <style>
+		calendar_button {
+		  cursor: pointer;
+		  border: 1px solid #8888aa;
+		}
+		 
+		.calendar_button:hover {
+		  background-color: #444444;
+		}
+
+    </style>
+</head>
+<body>
+    <h1>Edit author's profile</h1>
+    {% if form.errors %}
+        <p style="color: red;">
+            Please correct the error{{ form.errors|pluralize }} below.
+        </p>
+    {% endif %}
+
+    <form action="" method="post"> 
+			<div>
+				<label for="id_contacts">Contacts:</label>
+				{{ form.contacts }}
+			</div>
+			<div>
+				<label for="id_bio">Bio:</label>
+				{{ form.bio }}
+			</div> 
+			<div>
+				<label for="id_birth_day">Birth day:</label></th>
+				<span class="calendar_button">
+				{{ form.birth_day }}
+				</span>
+			</div>
+			<div>
+				<label for="id_last_name">Last name:</label>
+				{{ form.last_name }}
+			</div>
+			<div>
+				<label for="id_first_name">First name:</label>
+				{{ form.first_name }}
+			</div> 
+		<input type="submit" value="Save"> 
+    </form> 
+</body>
+</html>
