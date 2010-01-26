@@ -42,6 +42,7 @@ def editor(request):
         'birth_day': data.birth_day,
         'bio': data.bio,
         'contacts': data.contacts, })
+    print form.media 
     return render_to_response('editor_form.html',
                     {'form': form},
                     context_instance = RequestContext(request))

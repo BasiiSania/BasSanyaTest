@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import datetime
-import  time
+import time
 
 from django.utils.encoding import force_unicode
 from django.conf import settings
@@ -9,10 +9,7 @@ from django.utils.safestring import mark_safe
 
 # DATETIMEWIDGET
 calbtn = u"""<img src="%simages/calbutton.gif" alt="calendar"
-            id="%s_btn" style="cursor: pointer; border: 1px solid #8888aa;
-            " title="Select date and time"
-            onmouseover="this.style.background='#444444';"
-            onmouseout="this.style.background=''" />
+            id="%s_btn" title="Select date and time"/>
 <script type="text/javascript">
     Calendar.setup({
         inputField     :    "%s",
@@ -28,8 +25,7 @@ class DateTimeWidget(forms.widgets.TextInput):
     dformat = '%Y-%m-%d'
 
     def render(self, name, value, attrs=None):
-        if value is None:
-            value = ''
+        if value is None: value = ''
         final_attrs = self.build_attrs(attrs, type=self.input_type, name=name)
         if value != '':
             try:
