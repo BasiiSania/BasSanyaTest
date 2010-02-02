@@ -98,8 +98,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
-    'mysite.books',
-    'mysite.my_templatetags',
+    'mysite.mydata',
 )
 
 FIXTURE_DIRS = (
@@ -115,7 +114,7 @@ MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware', )
 INSTALLED_APPS += (
     'debug_toolbar',
 # for django-coverage 1.0.1:
-#    'test_coverage',
+    'django_coverage',
 )
 
 DEBUG_TOOLBAR_PANELS = (
@@ -134,13 +133,9 @@ DEBUG_TOOLBAR_CONFIG = {
 }
 INTERNAL_IPS = ('127.0.0.1', )
 
-#TEST_RUNNER = (
 # for django-coverage 1.0.1:
-#    'django_coverage.coverage_runner.run_tests',
-#)
+TEST_RUNNER = 'django_coverage.coverage_runner.run_tests'
 
-COVERAGE_CODE_EXCLUDES = (
-)
+COVERAGE_REPORT_HTML_OUTPUT_DIR = 'C:\Documents and Settings\Ingusik\BasSanyaTest\mysite\coverage'
 
-# for django-coverage 1.0.1:
-#COVERAGE_REPORT_HTML_OUTPUT_DIR = ''
+COVERAGE_CUSTOM_REPORTS = False

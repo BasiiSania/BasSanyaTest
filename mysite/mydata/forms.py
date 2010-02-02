@@ -3,8 +3,8 @@ import datetime
 from django import forms
 from django.db import models
 
-from mysite.books.widgets import DateTimeWidget
-from mysite.books.models import Author
+from mysite.mydata.widgets import DateTimeWidget
+from mysite.mydata.models import Author
 
 
 class EditorForm(forms.ModelForm):

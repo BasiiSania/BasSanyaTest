@@ -8,7 +8,7 @@ Replace these with more appropriate tests for your application.
 from django.test import TestCase
 from django.contrib.auth.models import User
 
-from mysite.books.models import Author
+from mysite.mydata.models import Author
 
 
 class SimpleTest(TestCase):
@@ -43,9 +43,15 @@ iamtest2
 >>> response = c.get('/accounts/login/?next=/')
 >>> response.status_code
 200
->>> response = c.post('/accounts/login/?next=/',{'username':'testuser','password':'testpassword'})
+>>> response = c.post('/accounts/login/?next=/',\
+               {'username':'testuser','password':'testpassword'})
 >>> response.status_code
 200
+>>> from mysite.mydata.models import AuthRequest
+>>> a = AuthRequest.objects.get(enter_login = "testuser")
+>>> a.enter_pass == "testpassword"
+True
+>>> a.delete()
 >>> response = c.post('/accounts/login/?next=/',{'username':'','password':''})
 >>> response.status_code
 200
@@ -63,8 +69,16 @@ True
 >>> response = c.post('/editor/', {'last_name':'eman_tsal'})
 >>> response.status_code
 302
->>> from mysite.books.models import Author
+>>> from mysite.mydata.models import Author
 >>> a = Author.objects.get(pk=1)
 >>> a.last_name
 u'eman_tsal'
+>>> from middleware import SaveAuthenticationRequestMiddleware
+>>> o = SaveAuthenticationRequestMiddleware()
+>>> class MyRequest(object):
+...     method = 'POST'
+...     path = '/accounts/login/'
+...     POST = {}
+>>> request = MyRequest()
+>>> o.process_request(request)
 """}

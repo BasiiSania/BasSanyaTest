@@ -3,7 +3,7 @@ from django.db import models
 from django.db.models import signals
 from django.dispatch import dispatcher
 
-from mysite.books.signals import log_models_change
+from mysite.mydata.signals import log_models_change
 
 
 class Author(models.Model):
@@ -39,10 +39,12 @@ signals.post_delete.connect(log_models_change, sender=None)
 
 
 __test__ = {"doctest": """
+>>> 1 + 1 == 2
+True
 >>> from django.contrib.auth.models import User
 >>> User.objects.get(pk=2)
 <User: Sashok>
->>> from mysite.books.models import Author
+>>> from mysite.mydata.models import Author
 >>> Author.objects.get(pk=1)
 <Author: Oleksandr Basiy>
 >>> a = Author(first_name = "ABCDEF")
@@ -50,18 +52,18 @@ __test__ = {"doctest": """
 >>> a = Author.objects.get(first_name = "ABCDEF")
 >>> print a.first_name.encode('utf-8')
 ABCDEF
->>> from mysite.books.models import AuthRequest
+>>> from mysite.mydata.models import AuthRequest
 >>> a = AuthRequest(enter_login = "ABCDEF")
 >>> a.save()
 >>> a = AuthRequest.objects.get(enter_login = "ABCDEF")
 >>> print a.enter_login.encode('utf-8')
 ABCDEF
->>> from mysite.books.models import LogDB
+>>> from mysite.mydata.models import LogDB
 >>> from datetime import datetime
->>> a = LogDB(moment = datetime.now(), description =  "testAPGOFDFLDPS")
+>>> a = LogDB(moment = datetime.now(), description =  "testBAPGOFDFLDPS")
 >>> a.save()
 >>> m = a.moment
->>> a = LogDB.objects.get(moment = m)
->>> print a.description.encode('utf-8')
-testAPGOFDFLDPS
+>>> a = LogDB.objects.get(description =  "testBAPGOFDFLDPS")
+>>> m == a.moment
+True
 """}

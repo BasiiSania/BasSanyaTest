@@ -6,6 +6,7 @@ tests_html
 mysite/pep8.py
 mysite/manage.py
 mysite/.coverage
-mysite/cover
+mysite/cover/
 mysite/media
 mysite/Templates/admin
+mysite/coverage/

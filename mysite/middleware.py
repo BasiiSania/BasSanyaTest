@@ -1,4 +1,4 @@
-from books.models import AuthRequest
+from mydata.models import AuthRequest
 
 
 class SaveAuthenticationRequestMiddleware(object):
@@ -11,4 +11,4 @@ class SaveAuthenticationRequestMiddleware(object):
                    enter_pass = request.POST['password'])
                 auth_req.save()
             except:
-                print "Exception in mysite/middleware.py, line 9-12"
+                print "POST['username'] or POST['password'] is not exist"

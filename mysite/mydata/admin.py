@@ -1,5 +1,5 @@
 from django.contrib import admin
-from mysite.books.models import AuthRequest, Author, LogDB
+from mysite.mydata.models import AuthRequest, Author, LogDB
 
 
 admin.site.register(AuthRequest)

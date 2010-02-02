@@ -9,7 +9,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.contrib.auth.models import User
 
-from books.models import Author
+from mydata.models import Author
 
 
 def hello(request):

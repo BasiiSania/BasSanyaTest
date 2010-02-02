@@ -3,7 +3,13 @@ from django import template
  
 register = template.Library()
  
- 
+
+"""
+For example for a link to a current user editor:
+<tr>
+	<td>{% edit_list user %} any text as a link {% endedit_list %} </td>
+</tr>
+""" 
 @register.tag(name="edit_list")
 def do_edit_list(parser, token):
     nodelist = parser.parse(('endedit_list', ))
@@ -17,11 +23,6 @@ def do_edit_list(parser, token):
  
  
 class EditListObjNode(template.Node):
-    """
-    <tr>
-        <td>{% edit_list user %} any text as a link {% endedit_list %} </td>
-    </tr>
-    """
     def __init__(self, obj_name, nodelist):
         self.obj_name = obj_name
         self.nodelist = nodelist
