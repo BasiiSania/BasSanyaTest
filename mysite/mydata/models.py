@@ -3,8 +3,6 @@ from django.db import models
 from django.db.models import signals
 from django.dispatch import dispatcher
 
-from mysite.mydata.signals import log_models_change
-
 
 class Author(models.Model):
     first_name = models.CharField(max_length=30, blank=True)
@@ -33,12 +31,13 @@ class LogDB(models.Model):
         return '%s: %s' % (self.moment.strftime("%Y %b %d, %H:%M:%S"),
                            self.description)
 
+from mysite.mydata.signals import log_models_change
 
 signals.post_save.connect(log_models_change, sender=None)
 signals.post_delete.connect(log_models_change, sender=None)
 
 
-__test__ = {"doctest": """
+__test__ = {"models_doctest": """
 >>> 1 + 1 == 2
 True
 >>> from django.contrib.auth.models import User

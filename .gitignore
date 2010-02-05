@@ -4,8 +4,8 @@ mysite/settings_local.py
 tests_html/*.html
 tests_html
 mysite/pep8.py
-mysite/manage.py
 mysite/.coverage
+mysite/local_settings.py
 mysite/cover/
 mysite/media
 mysite/Templates/admin

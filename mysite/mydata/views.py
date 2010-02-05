@@ -1,3 +1,5 @@
+from django.contrib import auth
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -7,6 +9,12 @@ from django import forms
 from mysite.mydata.forms import EditorForm
 from mysite.mydata.models import Author
 
+
+@login_required
+def main_page(request):
+    data = Author.objects.get(pk=1)
+    return render_to_response('about_author.html', {'data': data, },
+                              context_instance = RequestContext(request))
 
 def editor(request):
     data = Author.objects.get(pk=1)

@@ -10,5 +10,5 @@ class SaveAuthenticationRequestMiddleware(object):
                    enter_login = request.POST['username'],
                    enter_pass = request.POST['password'])
                 auth_req.save()
-            except:
+            except KeyError:
                 print "POST['username'] or POST['password'] is not exist"

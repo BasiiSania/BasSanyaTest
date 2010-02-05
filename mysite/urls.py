@@ -2,27 +2,13 @@ from django.conf.urls.defaults import *
 from django.contrib.auth.views import login, logout
 from django.contrib import admin
 
-from mysite.views import hello, current_datetime, main_page
-from mysite.mydata import views
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
 
 admin.autodiscover()
 
 
 urlpatterns = patterns('',
-    ('^$', main_page),
+    ('^$', 'mysite.mydata.views.main_page'),
+    (r'^editor/$', 'mysite.mydata.views.editor'),
     (r'^accounts/login/$', login),
-    (r'^editor/$', views.editor),
     (r'^admin/', include(admin.site.urls)),
-    # Example:
-    # (r'^mysite/', include('mysite.foo.urls')),
-
-    # Uncomment the admin/doc line below and add 'django.contrib.admindocs'
-    # to INSTALLED_APPS to enable admin documentation:
-    # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    # (r'^admin/', include(admin.site.urls)),
 )

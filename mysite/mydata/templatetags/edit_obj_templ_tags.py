@@ -12,6 +12,8 @@ For example for a link to a current user editor:
 """ 
 @register.tag(name="edit_list")
 def do_edit_list(parser, token):
+    print parser
+    print token
     nodelist = parser.parse(('endedit_list', ))
     try:
         tag_name, obj_name = token.split_contents()

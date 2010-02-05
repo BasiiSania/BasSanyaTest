@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 from mysite.mydata.models import Author
 
 
-class SimpleTest(TestCase):
+class FixturesTest(TestCase):
     fixtures = ['initial_data.json']
 
     def test_auth_correct(self):
@@ -22,9 +22,7 @@ class SimpleTest(TestCase):
         self.assertEquals(data.contacts, '5156696, Kyiv')
         self.assertEquals(data2.username, 'Sashok')
 
-__test__ = {"doctest": """
->>> 1 + 1 == 2
-True
+__test__ = {"all_doctest": """
 >>> from django.contrib.auth.models import User
 >>> user = User.objects.create_user('iamtest2', 'iambot@example.com', 'password')
 >>> user.save()
@@ -52,6 +50,7 @@ iamtest2
 >>> a.enter_pass == "testpassword"
 True
 >>> a.delete()
+>>> response = c.post('/accounts/login/?next=/',{'username':'','pass':''})
 >>> response = c.post('/accounts/login/?next=/',{'username':'','password':''})
 >>> response.status_code
 200
@@ -73,12 +72,4 @@ True
 >>> a = Author.objects.get(pk=1)
 >>> a.last_name
 u'eman_tsal'
->>> from middleware import SaveAuthenticationRequestMiddleware
->>> o = SaveAuthenticationRequestMiddleware()
->>> class MyRequest(object):
-...     method = 'POST'
-...     path = '/accounts/login/'
-...     POST = {}
->>> request = MyRequest()
->>> o.process_request(request)
 """}
