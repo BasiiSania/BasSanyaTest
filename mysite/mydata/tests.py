@@ -50,7 +50,15 @@ iamtest2
 >>> a.enter_pass == "testpassword"
 True
 >>> a.delete()
->>> response = c.post('/accounts/login/?next=/',{'username':'','pass':''})
+>>> #response = c.post('/accounts/login/?next=/',{'username':'','pass':''})
+... from middleware import SaveAuthenticationRequestMiddleware
+>>> o = SaveAuthenticationRequestMiddleware()
+>>> class MyRequest(object):
+...     method = 'POST'
+...     path = '/accounts/login/'
+...     POST = {}
+>>> request = MyRequest()
+>>> o.process_request(request)#end
 >>> response = c.post('/accounts/login/?next=/',{'username':'','password':''})
 >>> response.status_code
 200
